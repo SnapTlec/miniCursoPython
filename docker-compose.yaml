@@ -4,9 +4,11 @@ services:
     mysql:
       container_name: mysql
       build:
-        dockerfile: ./database/dev.Dockerfile
+        dockerfile: ./database/database_dev.Dockerfile
         target: development
       restart : always
+      volumes:
+        - ./database/init:/docker-entrypoint-initdb.d
       ports:
         - 3333:3000
       env_file:
